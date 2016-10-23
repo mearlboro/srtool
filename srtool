@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# First argument: directory containing compiled solution and Antlr .jar file (if you are using the Java skeleton)
+# If you are using a language other than Java you may wish to ignore this argument.
+
+# Second argument: the .c program to be analysed
+
+DIR=$1
+# TOOLS_PATH="${DIR}/out/production/srtool_part_1_playground_24/"
+TOOLS_PATH="${DIR}/out/"
+
+ADDED_TO_PATH="${DIR}/lib/antlr-4.5.3-complete.jar:${DIR}/lib/scala-library.jar:${TOOLS_PATH}"
+
+EXECUTABLE="tool.IdentityTransform"
+
+# Add z3 to our path
+PATH=${PATH}:`pwd`
+
+java -cp ${ADDED_TO_PATH} ${EXECUTABLE} $2

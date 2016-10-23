@@ -10,23 +10,19 @@ import scala.collection.JavaConversions._
 
 
 class SimpleCCodeVisitor extends SimpleCBaseVisitor[String]{
-//  override def visitProgram(ctx: SimpleCParser.ProgramContext): String = visitChildren(ctx)
-override def visitProgram(ctx: SimpleCParser.ProgramContext): String = {
-  return "// VAR DECL:\n" + visitVarDecl(ctx.varDecl) +
-    "\n// PROCEDURES:\n" + visitProcedureDecl(ctx.procedureDecl)
+  override def visitProgram(ctx: SimpleCParser.ProgramContext): String =
+    "// VAR DECL:\n" + visitVarDecl(ctx.varDecl) +
+      "\n// PROCEDURES:\n" + visitProcedureDecl(ctx.procedureDecl)
 
-}
 
-  override def visitVarDecl(ctx: SimpleCParser.VarDeclContext): String = {
+  override def visitVarDecl(ctx: SimpleCParser.VarDeclContext): String =
     if (ctx == null) "" else "int " + ctx.name.getText() + ";"
-
-  }
 
   override def visitProcedureDecl(ctx: SimpleCParser.ProcedureDeclContext): String =
    if (ctx == null) "NO PROCEDURE\n" else
      "int " + ctx.name.getText() + "(" + visitFormalParams(ctx.formals) + ")\n" +
      visitPreposts(ctx.contract) +
-     "{\n" +  visitStatements(ctx.stmts) + "\n" +
+     " {\n" +  visitStatements(ctx.stmts) + "\n" +
      "return " + visitExpr(ctx.returnExpr) + ";" +
      "\n}\n"
 
@@ -86,8 +82,7 @@ override def visitProgram(ctx: SimpleCParser.ProgramContext): String = {
 
   // TODO: check that squished things are ok.
   override def visitExpr(ctx: SimpleCParser.ExprContext):String= ctx.getText
-
-
+  
   override def visitTernExpr(ctx: SimpleCParser.TernExprContext):String= visitChildren(ctx)
 
   override def visitLorExpr(ctx: SimpleCParser.LorExprContext):String= visitChildren(ctx)

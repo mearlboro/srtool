@@ -1,7 +1,149 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="017c4eed-58b2-44f2-9f59-1b6da39a53ca" name="Default" comment="" />
+    <list default="true" id="017c4eed-58b2-44f2-9f59-1b6da39a53ca" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dependencies/antlr-4.5.3-complete.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/CORRECT.expect" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/INCORRECT.expect" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/example/Count42s.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/example/Count42sVisitor.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/lit.site.cfg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/parser/SimpleC.g" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/parser/SimpleC.tokens" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/parser/SimpleCBaseListener.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/parser/SimpleCBaseVisitor.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/parser/SimpleCLexer.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/parser/SimpleCLexer.tokens" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/parser/SimpleCListener.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/parser/SimpleCParser$AddExprContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/parser/SimpleCParser$AssertStmtContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/parser/SimpleCParser$AssignStmtContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/parser/SimpleCParser$AssumeStmtContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/parser/SimpleCParser$AtomExprContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/parser/SimpleCParser$BandExprContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/parser/SimpleCParser$BlockStmtContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/parser/SimpleCParser$BorExprContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/parser/SimpleCParser$BxorExprContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/parser/SimpleCParser$CallStmtContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/parser/SimpleCParser$CandidateInvariantContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/parser/SimpleCParser$EnsuresContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/parser/SimpleCParser$EqualityExprContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/parser/SimpleCParser$ExprContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/parser/SimpleCParser$FormalParamContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/parser/SimpleCParser$HavocStmtContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/parser/SimpleCParser$IfStmtContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/parser/SimpleCParser$InvariantContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/parser/SimpleCParser$LandExprContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/parser/SimpleCParser$LoopInvariantContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/parser/SimpleCParser$LorExprContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/parser/SimpleCParser$MulExprContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/parser/SimpleCParser$NumberExprContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/parser/SimpleCParser$OldExprContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/parser/SimpleCParser$ParenExprContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/parser/SimpleCParser$PrepostContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/parser/SimpleCParser$ProcedureDeclContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/parser/SimpleCParser$ProgramContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/parser/SimpleCParser$RelExprContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/parser/SimpleCParser$RequiresContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/parser/SimpleCParser$ResultExprContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/parser/SimpleCParser$ShiftExprContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/parser/SimpleCParser$StmtContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/parser/SimpleCParser$TernExprContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/parser/SimpleCParser$UnaryExprContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/parser/SimpleCParser$VarDeclContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/parser/SimpleCParser$VarrefExprContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/parser/SimpleCParser$WhileStmtContext.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/parser/SimpleCParser.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/parser/SimpleCVisitor.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/srtool" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/tests/correct/.simplesub.c.swp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/tests/correct/Output/divzero.c.tmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/tests/correct/Output/if.c.tmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/tests/correct/Output/ifelse.c.tmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/tests/correct/Output/overshift.c.tmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/tests/correct/Output/simpleeq.c.tmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/tests/correct/Output/simplelor.c.tmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/tests/correct/Output/simplesub.c.tmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/tests/correct/divzero.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/tests/correct/if.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/tests/correct/ifelse.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/tests/correct/overshift.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/tests/correct/simpleeq.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/tests/correct/simplelor.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/tests/correct/simplesub.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/tests/incorrect/Output/assertfalse.c.tmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/tests/incorrect/Output/faildivzero.c.tmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/tests/incorrect/Output/failold.c.tmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/tests/incorrect/Output/failovershift.c.tmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/tests/incorrect/Output/failsimpleeq.c.tmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/tests/incorrect/Output/failsimplelor.c.tmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/tests/incorrect/Output/failsimplesub.c.tmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/tests/incorrect/assertfalse.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/tests/incorrect/faildivzero.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/tests/incorrect/failold.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/tests/incorrect/failovershift.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/tests/incorrect/failsimpleeq.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/tests/incorrect/failsimplelor.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/tests/incorrect/failsimplesub.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/tests/test_compatability.sh" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/tool/IdentityTransform$$anonfun$main$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/tool/IdentityTransform$.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/tool/IdentityTransform.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/tool/SRTool.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/tool/Typechecker.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/tool/VCGenerator.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/util/FileUtil$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/util/FileUtil.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/util/ProcessExec$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/util/ProcessExec$Worker.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/util/ProcessExec.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/util/ProcessTimeoutException.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/visitors/SimpleCCodeVisitor$$anonfun$visitFormalParams$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/visitors/SimpleCCodeVisitor$$anonfun$visitPreposts$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/visitors/SimpleCCodeVisitor$$anonfun$visitStatements$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/visitors/SimpleCCodeVisitor.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/srtool_part_1_playground_24/z3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/CORRECT.expect" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/INCORRECT.expect" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/lit.site.cfg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/srtool" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/tests/correct/.simplesub.c.swp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/tests/correct/Output/divzero.c.tmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/tests/correct/Output/if.c.tmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/tests/correct/Output/ifelse.c.tmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/tests/correct/Output/overshift.c.tmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/tests/correct/Output/simpleeq.c.tmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/tests/correct/Output/simplelor.c.tmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/tests/correct/Output/simplesub.c.tmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/tests/correct/divzero.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/tests/correct/if.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/tests/correct/ifelse.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/tests/correct/overshift.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/tests/correct/simpleeq.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/tests/correct/simplelor.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/tests/correct/simplesub.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/tests/incorrect/Output/assertfalse.c.tmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/tests/incorrect/Output/faildivzero.c.tmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/tests/incorrect/Output/failold.c.tmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/tests/incorrect/Output/failovershift.c.tmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/tests/incorrect/Output/failsimpleeq.c.tmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/tests/incorrect/Output/failsimplelor.c.tmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/tests/incorrect/Output/failsimplesub.c.tmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/tests/incorrect/assertfalse.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/tests/incorrect/faildivzero.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/tests/incorrect/failold.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/tests/incorrect/failovershift.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/tests/incorrect/failsimpleeq.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/tests/incorrect/failsimplelor.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/tests/incorrect/failsimplesub.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/tests/test_compatability.sh" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/z3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/testing/README.txt" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/antlr_4_5_3_complete.xml" afterPath="$PROJECT_DIR$/.idea/libraries/antlr_4_5_3_complete.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/visitors/SimpleCCodeVisitor.scala" afterPath="$PROJECT_DIR$/src/visitors/SimpleCCodeVisitor.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/srtool_part_1_playground_24.iml" afterPath="$PROJECT_DIR$/srtool_part_1_playground_24.iml" />
+    </list>
     <ignored path="SRTool.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -24,9 +166,11 @@
       <file leaf-file-name="SRTool.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/tool/SRTool.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="840">
-              <caret line="69" column="23" selection-start-line="21" selection-start-column="8" selection-end-line="69" selection-end-column="23" />
-              <folding />
+            <state relative-caret-position="480">
+              <caret line="45" column="40" selection-start-line="45" selection-start-column="30" selection-end-line="45" selection-end-column="40" />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -34,8 +178,8 @@
       <file leaf-file-name="SimpleCCodeVisitor.scala" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/visitors/SimpleCCodeVisitor.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="41" column="70" selection-start-line="41" selection-start-column="70" selection-end-line="41" selection-end-column="70" />
+            <state relative-caret-position="630">
+              <caret line="84" column="2" selection-start-line="84" selection-start-column="2" selection-end-line="84" selection-end-column="2" />
               <folding>
                 <element signature="e#68#110#0" expanded="true" />
               </folding>
@@ -43,21 +187,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SimpleCParser.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/parser/SimpleCParser.java">
+      <file leaf-file-name="srtool" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/srtool">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="329">
-              <caret line="1413" column="24" selection-start-line="1413" selection-start-column="24" selection-end-line="1413" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SimpleCVisitor.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/parser/SimpleCVisitor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+            <state relative-caret-position="270">
+              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -66,11 +200,9 @@
       <file leaf-file-name="IdentityTransform.scala" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/tool/IdentityTransform.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="30" column="47" selection-start-line="30" selection-start-column="47" selection-end-line="30" selection-end-column="47" />
-              <folding>
-                <element signature="e#14#44#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="105">
+              <caret line="13" column="7" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -92,6 +224,8 @@
         <option value="$PROJECT_DIR$/src/example/Count42sVisitor.java" />
         <option value="$PROJECT_DIR$/src/visitors/SimpleCVisitor.scala" />
         <option value="$PROJECT_DIR$/src/tool/IdentityTransform.scala" />
+        <option value="$PROJECT_DIR$/srtool" />
+        <option value="$PROJECT_DIR$/srtool.properties" />
         <option value="$PROJECT_DIR$/src/visitors/SimpleCCodeVisitor.scala" />
       </list>
     </option>
@@ -100,7 +234,7 @@
     <option name="x" value="1280" />
     <option name="y" value="-617" />
     <option name="width" value="1280" />
-    <option name="height" value="1417" />
+    <option name="height" value="1413" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -127,6 +261,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -142,20 +279,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="srtool_part_1_playground_24" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SRTool" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="srtool_part_1_playground_24" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -190,30 +313,41 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="tool" />
+              <option name="myItemId" value="SRTool" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="srtool_part_1_playground_24" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/dependencies/antlr-4.5.3-complete.jar!/" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/scala-library.jar!/" />
+    <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
     <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
     <property name="GenerateAntBuildDialog.backupFiles" value="true" />
     <property name="GenerateAntBuildDialog.outputFileNameProperty" value="srtool" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.build" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="GenerateAntBuildDialog.generateSingleFile" value="true" />
+    <property name="GenerateAntBuildDialog.generateIdeaHomeProperty" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -250,7 +384,7 @@
       </extension>
       <option name="MAIN_CLASS_NAME" value="tool.IdentityTransform" />
       <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="src/tests/correct/simplesub.c" />
+      <option name="PROGRAM_PARAMETERS" value="tests/correct/simplesub.c" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -596,7 +730,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1280" y="-617" width="1280" height="1417" extended-state="0" />
+    <frame x="1280" y="-617" width="1280" height="1413" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -606,12 +740,12 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2462908" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24553572" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2015625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2578125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -638,13 +772,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="scala-line">
-          <url>file://$PROJECT_DIR$/src/visitors/SimpleCCodeVisitor.scala</url>
-          <line>28</line>
-          <properties />
-        </line-breakpoint>
-      </breakpoints>
       <option name="time" value="1" />
     </breakpoint-manager>
     <watches-manager />
@@ -656,14 +783,6 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/tool/SRTool.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="45" column="31" selection-start-line="45" selection-start-column="31" selection-end-line="45" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tool/Typechecker.java">
-      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
@@ -672,7 +791,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CORRECT.expect">
+    <entry file="file://$PROJECT_DIR$/src/tool/SRTool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="45" column="31" selection-start-line="45" selection-start-column="31" selection-end-line="45" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tool/Typechecker.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -686,79 +815,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/lit.site.cfg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testing/README.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="31" column="65" selection-start-line="31" selection-start-column="65" selection-end-line="31" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/srtool">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tests/correct/if.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="1" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tests/correct/divzero.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tests/correct/ifelse.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tests/correct/overshift.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tests/correct/simpleeq.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tests/correct/simplelor.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tests/correct/simplesub.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/testing/README.txt" />
+    <entry file="file://$PROJECT_DIR$/src/tests/correct/if.c" />
+    <entry file="file://$PROJECT_DIR$/src/tests/correct/ifelse.c" />
+    <entry file="file://$PROJECT_DIR$/src/tests/correct/overshift.c" />
+    <entry file="file://$PROJECT_DIR$/src/tests/correct/simpleeq.c" />
+    <entry file="file://$PROJECT_DIR$/src/tests/correct/simplelor.c" />
+    <entry file="file://$PROJECT_DIR$/src/tests/correct/simplesub.c" />
     <entry file="file://$PROJECT_DIR$/src/util/FileUtil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -770,9 +833,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
           <caret line="27" column="4" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -780,7 +840,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="28" column="4" selection-start-line="28" selection-start-column="4" selection-end-line="28" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -788,7 +847,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
           <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -796,27 +854,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="12" column="31" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tool/SRTool.java">
+    <entry file="jar://$PROJECT_DIR$/dependencies/antlr-4.5.3-complete.jar!/org/antlr/v4/runtime/tree/AbstractParseTreeVisitor.class" />
+    <entry file="file://$PROJECT_DIR$/src/parser/SimpleCBaseVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="69" column="23" selection-start-line="21" selection-start-column="8" selection-end-line="69" selection-end-column="23" />
-          <folding />
+        <state relative-caret-position="747">
+          <caret line="173" column="87" selection-start-line="173" selection-start-column="87" selection-end-line="173" selection-end-column="87" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tool/IdentityTransform.scala">
+    <entry file="jar://$PROJECT_DIR$/dependencies/antlr-4.5.3-complete.jar!/org/antlr/v4/runtime/ParserRuleContext.class" />
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_20.jdk/Contents/Home/src.zip!/java/util/List.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="47" selection-start-line="30" selection-start-column="47" selection-end-line="30" selection-end-column="47" />
-          <folding>
-            <element signature="e#14#44#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="329">
+          <caret line="110" column="17" selection-start-line="110" selection-start-column="17" selection-end-line="110" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/dependencies/antlr-4.5.3-complete.jar!/org/antlr/v4/runtime/Token.class" />
+    <entry file="file://$PROJECT_DIR$/out/production/srtool_part_1_playground_24/tool/Typechecker.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -824,62 +885,69 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/dependencies/antlr-4.5.3-complete.jar!/org/antlr/v4/runtime/tree/AbstractParseTreeVisitor.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/parser/SimpleCBaseVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="747">
-          <caret line="173" column="87" selection-start-line="173" selection-start-column="87" selection-end-line="173" selection-end-column="87" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/dependencies/antlr-4.5.3-complete.jar!/org/antlr/v4/runtime/ParserRuleContext.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/parser/SimpleCParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="1413" column="24" selection-start-line="1413" selection-start-column="24" selection-end-line="1413" selection-end-column="24" />
+        <state relative-caret-position="339">
+          <caret line="252" column="75" selection-start-line="252" selection-start-column="68" selection-end-line="252" selection-end-column="75" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_20.jdk/Contents/Home/src.zip!/java/util/List.java">
+    <entry file="file://$PROJECT_DIR$/src/tests/correct/.simplesub.c.swp" />
+    <entry file="file://$PROJECT_DIR$/src/tests/correct/divzero.c" />
+    <entry file="file://$PROJECT_DIR$/src/lit.site.cfg" />
+    <entry file="file://$PROJECT_DIR$/src/srtool" />
+    <entry file="file://$PROJECT_DIR$/src/INCORRECT.expect" />
+    <entry file="file://$PROJECT_DIR$/src/CORRECT.expect" />
+    <entry file="file://$PROJECT_DIR$/out/production/srtool_part_1_playground_24/tool/SRTool.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="110" column="17" selection-start-line="110" selection-start-column="17" selection-end-line="110" selection-end-column="17" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tool/SRTool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="45" column="40" selection-start-line="45" selection-start-column="30" selection-end-line="45" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/srtool.xml" />
+    <entry file="file://$PROJECT_DIR$/src/tool/IdentityTransform.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="13" column="7" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/dependencies/antlr-4.5.3-complete.jar!/org/antlr/v4/runtime/Token.class">
+    <entry file="file://$PROJECT_DIR$/srtool.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="15" column="21" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
+        <state relative-caret-position="60">
+          <caret line="4" column="47" selection-start-line="4" selection-start-column="47" selection-end-line="4" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/srtool">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/visitors/SimpleCCodeVisitor.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="41" column="70" selection-start-line="41" selection-start-column="70" selection-end-line="41" selection-end-column="70" />
+        <state relative-caret-position="630">
+          <caret line="84" column="2" selection-start-line="84" selection-start-column="2" selection-end-line="84" selection-end-column="2" />
           <folding>
             <element signature="e#68#110#0" expanded="true" />
           </folding>
@@ -915,7 +983,7 @@
       </state>
       <state key="GlobalLibrariesConfigurable.UI">
         <settings>
-          <last-edited>scala-sdk-2.11.8</last-edited>
+          <last-edited>scala-sdk-2.10.5</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
