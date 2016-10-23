@@ -37,39 +37,39 @@ public class CheckCorrect  {
 			}
 			System.exit(1);
 		}
-		
+
 		assert ctx.procedures.size() == 1; // For Part 1 of the coursework, this can be assumed
-				
+
 		for(ProcedureDeclContext proc : ctx.procedures) {
 			ToSMTVisitor visitor = new ToSMTVisitor();
 			visitor.visit(proc);
 			String smTv2 = visitor.getSMTv2();
-			System.out.println(smTv2);
+			// System.out.println(smTv2);
 
 			ProcessExec process = new ProcessExec("z3", "-smt2", "-in");
 			String queryResult = "";
 			try {
 				queryResult = process.execute(smTv2, TIMEOUT);
-				System.out.println(queryResult);
+				// System.out.println(queryResult);
 			} catch (ProcessTimeoutException e) {
 				System.out.println("UNKNOWN");
 				System.exit(1);
 			}
-			
+
 			if (queryResult.startsWith("sat")) {
 				System.out.println("INCORRECT");
 				System.exit(0);
 			}
-			
+
 			if (!queryResult.startsWith("unsat")) {
 				System.out.println("UNKNOWN");
-				System.out.println(queryResult);
+				// System.out.println(queryResult);
 				System.exit(1);
 			}
 		}
-		
+
 		System.out.println("CORRECT");
 		System.exit(0);
-		
+
     }
 }

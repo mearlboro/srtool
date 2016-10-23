@@ -11,7 +11,7 @@ TOOLS_PATH="${DIR}/out/"
 
 ADDED_TO_PATH="${DIR}/lib/antlr-4.5.3-complete.jar:${DIR}/lib/scala-library.jar:${TOOLS_PATH}"
 
-EXECUTABLE="tool.IdentityTransform"
+EXECUTABLE="tool.CheckCorrect"
 
 # Add z3 to our path
 PATH=${PATH}:`pwd`
