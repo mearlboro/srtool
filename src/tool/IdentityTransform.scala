@@ -6,7 +6,7 @@ import org.antlr.v4.runtime.{ANTLRInputStream, CommonTokenStream}
 import org.omg.CORBA.TIMEOUT
 import parser.{SimpleCLexer, SimpleCParser}
 import util.{ProcessExec, ProcessTimeoutException}
-import visitors.SimpleCCodeVisitor
+import visitors.{SimpleCCodeVisitor, SimpleCtoSSAVisitor}
 
 /**
   * Created by sam_coope on 22/10/2016.
@@ -35,7 +35,7 @@ object IdentityTransform {
       System.exit(1)
     }
 
-    val codeVisitor = new SimpleCCodeVisitor
+    val codeVisitor = new SimpleCtoSSAVisitor
     val thing = codeVisitor.visit(ctx)
     println(thing)
 
