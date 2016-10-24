@@ -2,3 +2,6 @@
 .swp
 .swo
 .idea/workspace.xml
+z3.exe
+out/*
+*.tmp

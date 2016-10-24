@@ -1,0 +1,6 @@
+#!/bin/sh
+
+TOOLS_PATH="out"
+ADDED_TO_PATH="lib/antlr-4.5.3-complete.jar:lib/scala-library.jar:${TOOLS_PATH}"
+
+java -cp ${ADDED_TO_PATH} tool.ToSMT

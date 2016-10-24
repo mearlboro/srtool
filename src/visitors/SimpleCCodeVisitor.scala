@@ -10,17 +10,13 @@ import scala.collection.JavaConversions._
 
 
 class SimpleCCodeVisitor extends SimpleCBaseVisitor[String]{
-//  override def visitProgram(ctx: SimpleCParser.ProgramContext): String = visitChildren(ctx)
-override def visitProgram(ctx: SimpleCParser.ProgramContext): String = {
-  return "// VAR DECL:\n" + visitVarDecl(ctx.varDecl) +
-    "\n// PROCEDURES:\n" + visitProcedureDecl(ctx.procedureDecl)
+  override def visitProgram(ctx: SimpleCParser.ProgramContext): String =
+    "// VAR DECL:\n" + visitVarDecl(ctx.varDecl) +
+      "\n// PROCEDURES:\n" + visitProcedureDecl(ctx.procedureDecl)
 
-}
 
-  override def visitVarDecl(ctx: SimpleCParser.VarDeclContext): String = {
+  override def visitVarDecl(ctx: SimpleCParser.VarDeclContext): String =
     if (ctx == null) "" else "int " + ctx.name.getText() + ";"
-
-  }
 
   override def visitProcedureDecl(ctx: SimpleCParser.ProcedureDeclContext): String =
    if (ctx == null) "NO PROCEDURE\n" else
@@ -61,32 +57,24 @@ override def visitProgram(ctx: SimpleCParser.ProgramContext): String = {
 
   override def visitIfStmt(ctx: SimpleCParser.IfStmtContext):String=
     if (ctx == null) "" else
-      "if(" + visitExpr(ctx.condition) + ")\n" +
+      "if (" + visitExpr(ctx.condition) + ") " +
         visitBlockStmt(ctx.thenBlock) + (
           if (ctx.elseBlock == null) "" else
-            "\nelse" + visitBlockStmt(ctx.elseBlock)
+            "\nelse " + visitBlockStmt(ctx.elseBlock)
         )
 
   override def visitWhileStmt(ctx: SimpleCParser.WhileStmtContext):String= visitChildren(ctx)
 
-
   override def visitBlockStmt(ctx: SimpleCParser.BlockStmtContext):String=
     if (ctx == null) "" else "{\n" + visitStatements(ctx.stmts) + "\n}"
 
-
   override def visitLoopInvariant(ctx: SimpleCParser.LoopInvariantContext):String= visitChildren(ctx)
-
 
   override def visitInvariant(ctx: SimpleCParser.InvariantContext):String= visitChildren(ctx)
 
-
   override def visitCandidateInvariant(ctx: SimpleCParser.CandidateInvariantContext):String= visitChildren(ctx)
 
-
-
-  // TODO: check that squished things are ok.
   override def visitExpr(ctx: SimpleCParser.ExprContext):String= ctx.getText
-
 
   override def visitTernExpr(ctx: SimpleCParser.TernExprContext):String= visitChildren(ctx)
 
@@ -145,11 +133,14 @@ override def visitProgram(ctx: SimpleCParser.ProgramContext): String = {
     return visitChildren(ctx)
   }
 
-  def visitStatements(stmts: java.util.List[SimpleCParser.StmtContext]) = stmts.toList.map(visitStmt).mkString("\n")
+  def visitStatements(stmts: java.util.List[SimpleCParser.StmtContext]) =
+    stmts.toList.map(visitStmt).mkString("\n")
 
-  def visitPreposts(preposts: java.util.List[SimpleCParser.PrepostContext]) = preposts.toList.map(visitPrepost).mkString(", \n")
+  def visitPreposts(preposts: java.util.List[SimpleCParser.PrepostContext]) =
+    preposts.toList.map(visitPrepost).mkString(", \n")
 
-  def visitFormalParams(params: java.util.List[SimpleCParser.FormalParamContext]) = params.toList.map(visitFormalParam).mkString(", ")
+  def visitFormalParams(params: java.util.List[SimpleCParser.FormalParamContext]) =
+    params.toList.map(visitFormalParam).mkString(", ")
 
 
 }
