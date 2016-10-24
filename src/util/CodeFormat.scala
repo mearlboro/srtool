@@ -14,15 +14,12 @@ object CodeFormat {
 
       val line = code.head
       val numberLeftBraces = line.count(_ == '{')
-      println(numberLeftBraces)
       val numberRightBraces = line.count(_ == '}')
-      println(numberRightBraces)
 
       val changeInBraces = numberLeftBraces - numberRightBraces
 
       val tabsToAdd = if(changeInBraces > 0) numberOfTabs else numberOfTabs + changeInBraces
       val formattedLine = (tabchar * tabsToAdd) + line
-      println(formattedLine)
 
       return formattedLine + "\n" + addTabs(tabchar, code.tail, numberOfTabs + changeInBraces)
     }

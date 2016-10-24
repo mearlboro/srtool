@@ -10,7 +10,8 @@ class FreshGenerator {
 
   def fresh(variable: String): Int = {
     if (variableToIndex.contains(variable)) {
-      return variableToIndex(variable) + 1
+      variableToIndex(variable) += 1
+      return variableToIndex(variable)
     }
     else {
       variableToIndex.put(variable, 0)
@@ -39,7 +40,7 @@ class SimpleCtoSSAVisitor extends SimpleCBaseVisitor[String] {
   // generate new SSA IDs for variables
   val freshGen = new FreshGenerator
   // return the variables changed by a statement
-  val modesetVisitor = new ModsetVisitor
+  val modsetVisitor = new ModsetVisitor
   // store the visitor's program state
   var state = new ProgramState
 
@@ -88,6 +89,8 @@ class SimpleCtoSSAVisitor extends SimpleCBaseVisitor[String] {
   override def visitAssignStmt(ctx: SimpleCParser.AssignStmtContext): String =
     if (ctx == null) return ""
     else {
+      // process right hand side before left in case it uses the same var
+      val rhs = visitExpr(ctx.rhs)
       // create new SSA variable for left hand side
       val lhs = ctx.lhs.getText()
       val newID = freshGen.fresh(lhs)
@@ -95,13 +98,13 @@ class SimpleCtoSSAVisitor extends SimpleCBaseVisitor[String] {
       // update M
       this.state.M += (lhs -> newID)
       // emit
-      return newLhs + " = " + visitExpr(ctx.rhs) + ";"
+      return newLhs + " = " + rhs + ";"
     }
 
   override def visitAssertStmt(ctx: SimpleCParser.AssertStmtContext): String =
     if (ctx == null) ""
     else "assert " +
-         "!(" + this.state.Pred + ") && " +
+         "!(" + this.state.Pred + ") || " +
          visitExpr(ctx.expr) + ";"
 
   override def visitAssumeStmt(ctx: SimpleCParser.AssumeStmtContext): String =
@@ -121,29 +124,38 @@ class SimpleCtoSSAVisitor extends SimpleCBaseVisitor[String] {
       val Pred = state.Pred
 
       state.Pred = Pred + " && " + newPred
-      visitBlockStmt(ctx.thenBlock)
-      val M1 = state.M // resulting M' after computing then
+      val thenCode = visit(ctx.thenBlock)
+      val M1 = state.M.clone() // resulting M' after computing then
 
-      state.M = M.clone()
-      state.Pred = Pred + " && !(" + newPred + ")"
-      visitBlockStmt(ctx.elseBlock)
-      val M2 = state.M // resulting M'' after computing else
+      var M2 = M.clone()
+      var elseCode = ""
+      if(ctx.elseBlock != null) {
+        state.M = M.clone()
+        state.Pred = Pred + " && !(" + newPred + ")"
+        elseCode = visit(ctx.elseBlock)
+        M2 = state.M.clone() // resulting M'' after computing else
+      }
 
-      state.M = M // return M to initial state, to be updated below
-      val modset = modesetVisitor.visit(ctx)
-      return modset.map(variable => {
-        state.M(variable) = freshGen.fresh(variable)
-        return variable + state.M(variable) + " = " +
-               newPred + " ? " +
-               variable + M1(variable) + " : " +
-               variable + M2(variable) + ";"
-      }).mkString("\n")
+      state.M = M.clone() // return M to initial state, to be updated below
+
+      // get modified vars
+      val modset = modsetVisitor.visit(ctx)
+      val decisionCode = modset.map(variable => {
+          state.M(variable) = freshGen.fresh(variable)
+          variable + state.M(variable) + " = " +
+            newPred + " ? " +
+            variable + M1(variable) + " : " +
+            variable + M2(variable) + ";"
+        }).mkString("\n")
+
+      // emit
+      return thenCode + elseCode + decisionCode
     }
 
   override def visitWhileStmt(ctx: SimpleCParser.WhileStmtContext): String= visitChildren(ctx)
 
   override def visitBlockStmt(ctx: SimpleCParser.BlockStmtContext): String=
-    if (ctx == null) "" else "{\n" + visitStatements(ctx.stmts) + "\n}"
+    if (ctx == null) "" else "{\n" + visitStatements(ctx.stmts) + "\n}\n"
 
   override def visitLoopInvariant(ctx: SimpleCParser.LoopInvariantContext): String= visitChildren(ctx)
 
