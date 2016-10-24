@@ -52,7 +52,9 @@ class SimpleCtoSSAVisitor extends SimpleCBaseVisitor[String] {
 
   override def visitVarDecl(ctx: SimpleCParser.VarDeclContext): String = {
     if (ctx != null) {
-      this.state.M += (ctx.name.getText -> 0)
+      val name = ctx.name.getText
+      this.state.M += (name -> 0)
+      return "int " + name + "0;"
     }
     return ""
   }
