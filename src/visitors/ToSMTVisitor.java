@@ -157,6 +157,12 @@ public class ToSMTVisitor extends SimpleCBaseVisitor<String> {
         return "";
     }
 
+    @Override
+    public String visitProcedureDecl(SimpleCParser.ProcedureDeclContext ctx) {
+        ctx.formalParam().forEach(c -> b.append(String.format("(declare-fun %s () (_ BitVec 32))\n",c.ID())));
+        return super.visitProcedureDecl(ctx);
+    }
+
     public ToSMTVisitor() {
         b.append("(set-logic QF_BV)\n");
         b.append("(set-option :produce-models true)\n");
