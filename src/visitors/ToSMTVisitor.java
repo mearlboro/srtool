@@ -33,6 +33,12 @@ public class ToSMTVisitor extends SimpleCBaseVisitor<String> {
     }
 
     @Override
+    public String visitTernExpr(SimpleCParser.TernExprContext ctx) {
+        if (ctx.getChildCount() == 1) return super.visitTernExpr(ctx);
+        return String.format("(ite %s %s %s)", visit(ctx.lorExpr(0)), visit(ctx.lorExpr(1)),visit(ctx.lorExpr(2)));
+    }
+
+    @Override
     public String visitMulExpr(SimpleCParser.MulExprContext ctx) {
         if (ctx.getChildCount() == 1) return super.visitMulExpr(ctx);
         String left = visitUnaryExpr(ctx.unaryExpr(0));
