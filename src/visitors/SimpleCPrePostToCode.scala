@@ -10,6 +10,8 @@ class SimpleCPrePostToCode extends SimpleCCodeVisitor{
   var requireExprs = List[String]()
 //  val ensureExprs = List[String]
 
+  var returnExprString = ""
+
   override def visitProcedureDecl(ctx: SimpleCParser.ProcedureDeclContext): String = {
     if (ctx == null) return ""
 
@@ -18,6 +20,8 @@ class SimpleCPrePostToCode extends SimpleCCodeVisitor{
 
     val statements = visitStatements(ctx.stmts)
     val returnExpr =  visitExpr(ctx.returnExpr)
+
+    returnExprString = returnExpr
 
     return "int " + name + "(" + formals + ")\n" +
       visitPreposts(ctx.contract) +
@@ -36,7 +40,11 @@ class SimpleCPrePostToCode extends SimpleCCodeVisitor{
   }
 
 //  TODO: this
-  override def visitEnsures(ctx: SimpleCParser.EnsuresContext):String=
-    if (ctx == null) "" else "ensures " + visitExpr(ctx.condition)
+  override def visitEnsures(ctx: SimpleCParser.EnsuresContext):String =
+    if (ctx == null) ""
+    else {
+      val substitutionVisitor = new SubstitutionVisitor("\\result", returnExprString)
+      "assert " + substitutionVisitor.visitExpr(ctx.condition)
+    }
 
 }
