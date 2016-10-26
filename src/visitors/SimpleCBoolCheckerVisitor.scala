@@ -9,32 +9,56 @@ import parser.SimpleCParser._
 class SimpleCBoolCheckerVisitor extends SimpleCBaseVisitor[Boolean]{
 
 
-  override def visitExpr(ctx: ExprContext): Boolean = super.visitExpr(ctx)
+  override def visitExpr(ctx: ExprContext): Boolean =
+      super.visitExpr(ctx)
 
-  override def visitTernExpr(ctx: TernExprContext): Boolean = true
+  override def visitTernExpr(ctx: TernExprContext): Boolean =
+      if(ctx.getChildCount() == 1) return super.visitTernExpr(ctx)
+      else false
 
-  override def visitLorExpr(ctx: LorExprContext): Boolean = true
+  override def visitLorExpr(ctx: LorExprContext): Boolean =
+      if(ctx.getChildCount() == 1) return super.visitLorExpr(ctx)
+      else true
 
-  override def visitLandExpr(ctx: LandExprContext): Boolean = true
+  override def visitLandExpr(ctx: LandExprContext): Boolean =
+      if(ctx.getChildCount() == 1) return super.visitLandExpr(ctx)
+      else true
 
-  override def visitBorExpr(ctx: BorExprContext): Boolean = false
+  override def visitBorExpr(ctx: BorExprContext): Boolean =
+      if(ctx.getChildCount() == 1) return super.visitBorExpr(ctx)
+      else false
 
-  override def visitBxorExpr(ctx: BxorExprContext): Boolean = false
+  override def visitBxorExpr(ctx: BxorExprContext): Boolean =
+      if(ctx.getChildCount() == 1) return super.visitBxorExpr(ctx)
+      else false
 
-  override def visitBandExpr(ctx: BandExprContext): Boolean = false
+  override def visitBandExpr(ctx: BandExprContext): Boolean =
+      if(ctx.getChildCount() == 1) return super.visitBandExpr(ctx)
+      else false
 
-  override def visitEqualityExpr(ctx: EqualityExprContext): Boolean = false
+  override def visitEqualityExpr(ctx: EqualityExprContext): Boolean =
+      if(ctx.getChildCount() == 1) return super.visitEqualityExpr(ctx)
+      else true
 
-  override def visitRelExpr(ctx: RelExprContext): Boolean = super.visitRelExpr(ctx)
+  override def visitRelExpr(ctx: RelExprContext): Boolean =
+      if(ctx.getChildCount() == 1) return super.visitRelExpr(ctx)
+      else true
 
-  override def visitShiftExpr(ctx: ShiftExprContext): Boolean = false
+  override def visitShiftExpr(ctx: ShiftExprContext): Boolean =
+      if(ctx.getChildCount() == 1) return super.visitShiftExpr(ctx)
+      else false
 
-  override def visitAddExpr(ctx: AddExprContext): Boolean = false
+  override def visitAddExpr(ctx: AddExprContext): Boolean =
+      if(ctx.getChildCount() == 1) return super.visitAddExpr(ctx)
+      else false
 
-  override def visitMulExpr(ctx: MulExprContext): Boolean = false
+  override def visitMulExpr(ctx: MulExprContext): Boolean =
+      if(ctx.getChildCount() == 1) return super.visitMulExpr(ctx)
+      else false
 
   override def visitUnaryExpr(ctx: UnaryExprContext): Boolean =
-    ctx.ops.get(0).getText() match {
+    if(ctx.getChildCount() == 1) return super.visitUnaryExpr(ctx)
+    else ctx.ops.get(0).getText() match {
       case "+" => false
       case "-" => false
       case "!" => true
@@ -42,13 +66,17 @@ class SimpleCBoolCheckerVisitor extends SimpleCBaseVisitor[Boolean]{
     }
 
   // unknown
-//  override def visitAtomExpr(ctx: AtomExprContext): Boolean = super.visitAtomExpr(ctx)
+//  override def visitAtomExpr(ctx: AtomExprContext): Boolean =
+//if(ctx.getChildCount() == 1) return super.visitAtomExpr(ctx)
+//else super.visitAtomExpr(ctx)
 
   override def visitNumberExpr(ctx: NumberExprContext): Boolean = false
 
   override def visitVarrefExpr(ctx: VarrefExprContext): Boolean = false
 
-  override def visitParenExpr(ctx: ParenExprContext): Boolean = super.visitParenExpr(ctx)
+  override def visitParenExpr(ctx: ParenExprContext): Boolean =
+      if(ctx.getChildCount() == 1) return super.visitParenExpr(ctx)
+      else super.visitExpr(ctx.expr())
 
 
   override def visitResultExpr(ctx: ResultExprContext): Boolean =

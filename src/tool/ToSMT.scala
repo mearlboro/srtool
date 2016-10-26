@@ -35,8 +35,9 @@ object ToSMT {
 
     assert(ctx.procedures.size == 1) // For Part 1 of the coursework, this can be assumed
     import scala.collection.JavaConversions._
+
     for (proc <- ctx.procedures) {
-      val visitor: ToSMTVisitor = new ToSMTVisitor
+      val visitor: ToSMTVisitor = new ToSMTVisitor(ctx.globals)
       visitor.visit(proc)
       val smTv2: String = visitor.getSMTv2
       System.err.println(smTv2);
