@@ -1,0 +1,8 @@
+#!/bin/sh
+virtualenv -p `which python` penv &&
+source penv/bin/activate &&
+pip install lit &&
+deactivate &&
+
+echo "Virtual envireonment made. to use it: source penv/bin/activate"
+
