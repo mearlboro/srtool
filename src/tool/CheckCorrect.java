@@ -13,7 +13,7 @@ import parser.SimpleCParser.ProgramContext;
 import util.ProcessExec;
 import util.ProcessTimeoutException;
 import visitors.SimpleCtoSSAVisitor;
-import visitors.ToSMTVisitor;
+import visitors.*;
 
 public class CheckCorrect  {
 
@@ -44,11 +44,14 @@ public class CheckCorrect  {
 
 		for(ProcedureDeclContext proc : ctx.procedures) {
 		//	SimpleCtoSSAVisitor visitor = new SimpleCtoSSAVisitor();
-            ToSMTVisitor visitor = new ToSMTVisitor(new LinkedList<>());
+//			SimpleCPrePostToCode visitor = new SimpleCPrePostToCode();
+
+			ToSMTVisitor visitor = new ToSMTVisitor(new LinkedList<>());
             visitor.visit(proc);
-		//	System.out.println(visitor.visit(proc));
+//			System.out.println(visitor.visit(proc));
+//			System.exit(0);
 			String smTv2 = visitor.getSMTv2();
-			 System.out.println(smTv2);
+			System.out.println(smTv2);
 
 			ProcessExec process = new ProcessExec("z3", "-smt2", "-in");
 			String queryResult = "";
