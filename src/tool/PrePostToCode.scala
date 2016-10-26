@@ -20,6 +20,7 @@ object PrePostToCode {
 
     if (parser.getNumberOfSyntaxErrors > 0) System.exit(1)
 
+    /* toSSA as-is will always fail due to undeclared SSA-id variables
     val tc: Typechecker = new Typechecker
     tc.visit(ctx)
     tc.resolve()
@@ -31,6 +32,7 @@ object PrePostToCode {
       }
       System.exit(1)
     }
+    */
 
     val codeVisitor = new SimpleCPrePostToCode
     val thing = codeVisitor.visit(ctx)
