@@ -28,7 +28,7 @@ class FreshGenerator {
  */
 class ProgramState {
   var M    = HashMap.empty[String, Int]
-  var Pred = "true"
+  var Pred = "(1 == 1)"
 }
 
 
@@ -43,7 +43,8 @@ class SimpleCtoSSAVisitor extends SimpleCBaseVisitor[String] {
   val modsetVisitor = new ModsetVisitor
   // store the visitor's program state
   var state = new ProgramState
-
+  // making an ass out of u and me
+  var assumptions = List[String]()
 
   // visitors
   override def visitProgram(ctx: SimpleCParser.ProgramContext): String =
@@ -53,8 +54,9 @@ class SimpleCtoSSAVisitor extends SimpleCBaseVisitor[String] {
   override def visitVarDecl(ctx: SimpleCParser.VarDeclContext): String = {
     if (ctx != null) {
       val name = ctx.name.getText
-      this.state.M += (name -> 0)
-      return "int " + name + "0;"
+      val nameID = freshGen.fresh(name)
+      this.state.M += (name -> nameID)
+      return s"int $name$nameID;\n"
     }
     return ""
   }
@@ -100,20 +102,40 @@ class SimpleCtoSSAVisitor extends SimpleCBaseVisitor[String] {
       // update M
       this.state.M += (lhs -> newID)
       // emit
-      return newLhs + " = " + rhs + ";"
+      return "int "  + newLhs + ";\n" +
+        newLhs + " = " + rhs + ";\n"
     }
 
   override def visitAssertStmt(ctx: SimpleCParser.AssertStmtContext): String =
     if (ctx == null) ""
-    else "assert " +
-         "!(" + this.state.Pred + ") || " +
-         visitExpr(ctx.expr) + ";"
+    else {
 
-  override def visitAssumeStmt(ctx: SimpleCParser.AssumeStmtContext): String =
-    if (ctx == null) "" else "assume " + visitExpr(ctx.condition) + ";"
+      val fancyName = (state.Pred :: assumptions).mkString(" && ")
+      val expr = visitExpr(ctx.condition)
+
+      return s"assert !($fancyName) || $expr;"
+    }
+
+  override def visitAssumeStmt(ctx: SimpleCParser.AssumeStmtContext): String = {
+    if (ctx == null) return ""
+
+    val conditionText = visitExpr(ctx.condition)
+    val preds = state.Pred
+
+    val newAssumption =  s"!($preds) || $conditionText"
+
+    this.assumptions = newAssumption :: this.assumptions
+    return ""
+  }
 
   override def visitHavocStmt(ctx: SimpleCParser.HavocStmtContext): String =
-    if (ctx == null) "" else "havoc " + ctx.`var`.getText() + ";"
+    if (ctx == null) ""
+    else {
+      val id = ctx.`var`.getText()
+      val newID = freshGen.fresh(id)
+      state.M.put(id, newID)
+      return s"int $id$newID;"
+    }
 
   override def visitCallStmt(ctx: SimpleCParser.CallStmtContext): String = visitChildren(ctx)
 
@@ -144,10 +166,11 @@ class SimpleCtoSSAVisitor extends SimpleCBaseVisitor[String] {
       val modset = modsetVisitor.visit(ctx)
       val decisionCode = modset.map(variable => {
           state.M(variable) = freshGen.fresh(variable)
+          "int " + variable + state.M(variable) + ";\n" +
           variable + state.M(variable) + " = " +
             newPred + " ? " +
-            variable + M1(variable) + " : " +
-            variable + M2(variable) + ";"
+            variable + M1.getOrElse(variable, 0) + " : " +
+            variable + M2.getOrElse(variable, 0) + ";"
         }).mkString("\n")
 
       // emit
@@ -157,7 +180,7 @@ class SimpleCtoSSAVisitor extends SimpleCBaseVisitor[String] {
   override def visitWhileStmt(ctx: SimpleCParser.WhileStmtContext): String= visitChildren(ctx)
 
   override def visitBlockStmt(ctx: SimpleCParser.BlockStmtContext): String=
-    if (ctx == null) "" else "{\n" + visitStatements(ctx.stmts) + "\n}\n"
+    if (ctx == null) "" else visitStatements(ctx.stmts)
 
   override def visitLoopInvariant(ctx: SimpleCParser.LoopInvariantContext): String= visitChildren(ctx)
 

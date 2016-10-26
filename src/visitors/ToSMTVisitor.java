@@ -1,11 +1,11 @@
 package visitors;
 
+import org.antlr.v4.runtime.ParserRuleContext;
 import parser.SimpleCBaseVisitor;
 import parser.SimpleCParser;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Created by Timotej on 15-Oct-16.
@@ -14,6 +14,7 @@ public class ToSMTVisitor extends SimpleCBaseVisitor<String> {
 
     StringBuilder b = new StringBuilder();
     List<String> assertions = new LinkedList<>();
+    SimpleCBoolCheckerVisitor boolTypeChecker = new SimpleCBoolCheckerVisitor();
 
     @Override
     public String visitAssignStmt(SimpleCParser.AssignStmtContext ctx) {
@@ -97,11 +98,14 @@ public class ToSMTVisitor extends SimpleCBaseVisitor<String> {
         return "";
     }
 
-
     @Override
     public String visitLorExpr(SimpleCParser.LorExprContext ctx) {
         if (ctx.getChildCount() == 1) return super.visitLorExpr(ctx);
-        return String.format("(or %s %s)", visitLandExpr(ctx.landExpr(0)), visitLandExpr(ctx.landExpr(1)));
+
+        String lhs = visitLandExpr(ctx.landExpr(0));
+        String rhs = visitLandExpr(ctx.landExpr(1));
+        String s = String.format("(or %s %s)", lhs, rhs;
+        return s;
     }
 
     @Override
@@ -166,6 +170,9 @@ public class ToSMTVisitor extends SimpleCBaseVisitor<String> {
     public ToSMTVisitor() {
         b.append("(set-logic QF_BV)\n");
         b.append("(set-option :produce-models true)\n");
+        b.append("(define-fun tobv32 ((p Bool)) (_ BitVec 32) (ite p (_ bv1 32) (_ bv0 32)))\n");
+        b.append("(define-fun tobool ((p (_ BitVec 32))) Bool (ite (= p (_ bv0 32)) false true))\n");
+
     }
 
     public String getSMTv2() {
@@ -182,5 +189,34 @@ public class ToSMTVisitor extends SimpleCBaseVisitor<String> {
 
         String current = cs.remove(0);
         return String.format("(and %s %s)", current, toConjunction(cs));
+    }
+
+    private String toBV(String expression) {
+        return String.format("(tobv32 %s)", expression);
+    }
+
+    private String toBool(String expression) {
+        return String.format("(tobool %s)", expression)
+    }
+
+
+    private String boolify(ParserRuleContext ctx) {
+        Boolean isBoolean = (Boolean) this.boolTypeChecker.visit(ctx);
+        if (!isBoolean) {
+            return toBool(ctx.accept(this));
+        } else {
+            return ctx.accept(this);
+        }
+
+    }
+
+    private String intify(ParserRuleContext ctx) {
+        Boolean isBoolean = (Boolean) this.boolTypeChecker.visit(ctx);
+        if (isBoolean) {
+            return toBV(ctx.accept(this));
+        } else {
+            return ctx.accept(this);
+        }
+
     }
 }
