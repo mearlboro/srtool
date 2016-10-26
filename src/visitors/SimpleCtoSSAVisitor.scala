@@ -223,6 +223,11 @@ class SimpleCtoSSAVisitor extends SimpleCBaseVisitor[String] {
   override def visitParenExpr(ctx: SimpleCParser.ParenExprContext):String =
     bracket(visitExpr(ctx.expr()))
 
+  override def visitResultExpr(ctx: SimpleCParser.ResultExprContext): String =
+    ctx.resultTok.getText()
+
+  override def visitOldExpr(ctx: SimpleCParser.OldExprContext): String =
+    ctx.oldTok.getText()
 
   def bracket(s: String): String = " (" + s + ") "
 

@@ -1,6 +1,9 @@
 package visitors
 
-import parser.{SimpleCBaseVisitor, SimpleCParser}
+import java.util
+import scala.collection.JavaConversions._
+import parser.SimpleCParser.PrepostContext
+import parser.SimpleCParser
 
 /**
   * Created by sam_coope on 24/10/2016.
@@ -33,13 +36,15 @@ class SimpleCPrePostToCode extends SimpleCCodeVisitor{
       "\n}\n"
   }
 
+  override def visitPreposts(preposts: util.List[PrepostContext]): String =
+    preposts.toList.map(visitPrepost).mkString("\n")
+
   override def visitRequires(ctx: SimpleCParser.RequiresContext):String= {
     if (ctx == null) return ""
     requireExprs = visitExpr(ctx.condition) :: requireExprs
     return ""
   }
 
-//  TODO: this
   override def visitEnsures(ctx: SimpleCParser.EnsuresContext):String =
     if (ctx == null) ""
     else {

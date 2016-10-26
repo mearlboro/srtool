@@ -1,14 +1,13 @@
 package visitors
 
-import parser.{SimpleCBaseVisitor, SimpleCParser}
+import parser.SimpleCParser
 
 /**
   * Created by ms6413 on 25/10/16.
   */
 class SubstitutionVisitor(val toReplace: String, val replaceWith: String) extends SimpleCCodeVisitor{
-
-  // Expressions
-  override def visitTernExpr(ctx: SimpleCParser.TernExprContext): String = visitChildren(ctx)
+  override def visitExpr(ctx: SimpleCParser.ExprContext): String =
+    visitChildren(ctx)
 
   override def visitLorExpr(ctx: SimpleCParser.LorExprContext): String =
     if(ctx.getChildCount == 1) super.visitLorExpr(ctx)
@@ -31,7 +30,7 @@ class SubstitutionVisitor(val toReplace: String, val replaceWith: String) extend
     else bracket(visit(ctx.equalityExpr(0)) + ctx.ops.get(0).getText + visit(ctx.equalityExpr(1)))
 
   override def visitEqualityExpr(ctx: SimpleCParser.EqualityExprContext):String =
-    if(ctx.getChildCount == 1) super.visitEqualityExpr(ctx)
+    if (ctx.getChildCount == 1) super.visitEqualityExpr(ctx)
     else bracket(visit(ctx.relExpr(0)) + ctx.ops.get(0).getText + visit(ctx.relExpr(1)))
 
   override def visitRelExpr(ctx: SimpleCParser.RelExprContext):String =
@@ -59,19 +58,19 @@ class SubstitutionVisitor(val toReplace: String, val replaceWith: String) extend
     ctx.NUMBER().toString
 
   override def visitVarrefExpr(ctx: SimpleCParser.VarrefExprContext):String =
-    visitIdentifierAndSubstitute(ctx.ID().getSymbol)
+    ctx.ID().getSymbol().getText()
 
   override def visitParenExpr(ctx: SimpleCParser.ParenExprContext):String =
     bracket(visitExpr(ctx.expr()))
 
+  // perform the actual substitution
+  override def visitResultExpr(ctx: SimpleCParser.ResultExprContext): String = {
+    val ident = ctx.resultTok.getText()
+    return (if (ident == toReplace) replaceWith else ident)
+  }
 
   def bracket(s: String): String = " (" + s + ") "
 
-  // perform the actual substitution
-  def visitIdentifierAndSubstitute(identifier: org.antlr.v4.runtime.Token): String = {
-    val ident = identifier.getText()
-    return (if (ident == toReplace) replaceWith else ident)
-  }
 }
 
 
