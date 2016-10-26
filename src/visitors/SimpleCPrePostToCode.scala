@@ -1,8 +1,9 @@
 package visitors
 
 import java.util
+
 import scala.collection.JavaConversions._
-import parser.SimpleCParser.PrepostContext
+import parser.SimpleCParser.{OldExprContext, PrepostContext}
 import parser.SimpleCParser
 
 /**
@@ -11,41 +12,60 @@ import parser.SimpleCParser
 class SimpleCPrePostToCode extends SimpleCCodeVisitor{
 
   var requireExprs = List[String]()
-//  val ensureExprs = List[String]
+  var ensureExprs = List[String]()
+
+  var oldVars = Set[String]()
 
   var returnExprString = ""
 
   override def visitProcedureDecl(ctx: SimpleCParser.ProcedureDeclContext): String = {
     if (ctx == null) return ""
 
-    val preposts = visitPreposts(ctx.contract)
-    if (this.requireExprs.isEmpty) return super.visitProcedureDecl(ctx)
+    val returnExpr =  visitExpr(ctx.returnExpr)
+    returnExprString = returnExpr
+    visitPreposts(ctx.contract)
+
+    // this line needs changing for ensures
+    if (this.requireExprs.isEmpty && this.ensureExprs.isEmpty) return super.visitProcedureDecl(ctx)
 
     val name =  ctx.name.getText()
+
     val formals = visitFormalParams(ctx.formals)
+    val statements =
+      oldVars.map(v => s"int old_$v;\nold_$v=$v;\n").mkString("\n") + visitStatements(ctx.stmts)
 
 
+    val requirePreds = this.requireExprs.mkString(" && ")
 
-    val statements = visitStatements(ctx.stmts)
-    val returnExpr =  visitExpr(ctx.returnExpr)
+    val ensureAsserts = this.ensureExprs.mkString("\n")
 
-    returnExprString = returnExpr
+    val code = if(requirePreds.isEmpty) {
+      s"""
+         |int $name($formals) {
+            |$statements
+            |$ensureAsserts
+            |return $returnExpr;
+         |}
+         |""".stripMargin
+    } else s"""
+         |int $name($formals) {
+            |if ($requirePreds) {
+                |$statements
+                |$ensureAsserts
+            |}
+            |return $returnExpr;
+         |}
+         |""".stripMargin
 
-   val code = "int " + name + "(" + formals + ")\n" +
-      visitPreposts(ctx.contract) +
-      " {\n" +
-        "if (" + this.requireExprs.mkString(" && ") + "){\n" +
-          statements + "\n" +
-        "\n}\n" +
-        "return " + returnExpr + ";" +
-      "\n}\n"
-
-    this.requireExprs = List[String]()
+    this.requireExprs = List.empty[String]
+    this.ensureExprs = List.empty[String]
     return code
   }
 
-  override def visitPreposts(preposts: util.List[PrepostContext]): String =
-    preposts.toList.map(visitPrepost).mkString("\n")
+  override def visitPreposts(preposts: util.List[PrepostContext]): String = {
+    preposts.toList.map(visitPrepost)
+    return ""
+  }
 
   override def visitRequires(ctx: SimpleCParser.RequiresContext):String= {
     if (ctx == null) return ""
@@ -53,11 +73,13 @@ class SimpleCPrePostToCode extends SimpleCCodeVisitor{
     return ""
   }
 
-  override def visitEnsures(ctx: SimpleCParser.EnsuresContext):String =
-    if (ctx == null) ""
-    else {
+  override def visitEnsures(ctx: SimpleCParser.EnsuresContext):String = {
+    if (ctx != null) {
       val substitutionVisitor = new SubstitutionVisitor("\\result", returnExprString)
-      "assert " + substitutionVisitor.visitExpr(ctx.condition)
+      this.ensureExprs = "assert " + substitutionVisitor.visitExpr(ctx.condition) + ";" :: this.ensureExprs
+      oldVars = oldVars union substitutionVisitor.oldVars
     }
+    return ""
+  }
 
 }

@@ -20,7 +20,6 @@ class FreshGenerator {
   }
 }
 
-
 /*
  * State ::= ( Pred, M )
  * Pred := a conjunction of boolean predicates
@@ -31,11 +30,10 @@ class ProgramState {
   var Pred = "(1 == 1)"
 }
 
-
 /*
  * visits the parse tree while building up the program state
  */
-class SimpleCtoSSAVisitor extends SimpleCBaseVisitor[String] {
+class SimpleCtoSSAVisitor extends SimpleCCodeVisitor {
 
   // generate new SSA IDs for variables
   val freshGen = new FreshGenerator
@@ -47,9 +45,6 @@ class SimpleCtoSSAVisitor extends SimpleCBaseVisitor[String] {
   var assumptions = List[String]()
 
   // visitors
-  override def visitProgram(ctx: SimpleCParser.ProgramContext): String =
-    visitVarDecl(ctx.varDecl) +
-    visitProcedureDecl(ctx.procedureDecl)
 
   override def visitVarDecl(ctx: SimpleCParser.VarDeclContext): String = {
     if (ctx != null) {
@@ -122,7 +117,7 @@ class SimpleCtoSSAVisitor extends SimpleCBaseVisitor[String] {
     val conditionText = visitExpr(ctx.condition)
     val preds = state.Pred
 
-    val newAssumption =  s"!($preds) || $conditionText"
+    val newAssumption =  s"(!($preds) || $conditionText)"
 
     this.assumptions = newAssumption :: this.assumptions
     return ""
@@ -188,78 +183,8 @@ class SimpleCtoSSAVisitor extends SimpleCBaseVisitor[String] {
 
   override def visitCandidateInvariant(ctx: SimpleCParser.CandidateInvariantContext): String= visitChildren(ctx)
 
-
-  // Expressions
-  override def visitTernExpr(ctx: SimpleCParser.TernExprContext): String = visitChildren(ctx)
-
-  override def visitLorExpr(ctx: SimpleCParser.LorExprContext): String =
-    if(ctx.getChildCount == 1) super.visitLorExpr(ctx)
-    else bracket(visit(ctx.landExpr(0)) + ctx.ops.get(0).getText + visit(ctx.landExpr(1)))
-
-  override def visitLandExpr(ctx: SimpleCParser.LandExprContext):String =
-    if(ctx.getChildCount == 1) super.visitLandExpr(ctx)
-    else bracket(visit(ctx.borExpr(0)) + ctx.ops.get(0).getText + visit(ctx.borExpr(1)))
-
-  override def visitBorExpr(ctx: SimpleCParser.BorExprContext):String =
-    if(ctx.getChildCount == 1) super.visitBorExpr(ctx)
-    else bracket(visit(ctx.bxorExpr(0)) + ctx.ops.get(0).getText + visit(ctx.bxorExpr(1)))
-
-  override def visitBxorExpr(ctx: SimpleCParser.BxorExprContext):String =
-    if(ctx.getChildCount == 1) super.visitBxorExpr(ctx)
-    else bracket(visit(ctx.bandExpr(0)) + ctx.ops.get(0).getText + visit(ctx.bandExpr(1)))
-
-  override def visitBandExpr(ctx: SimpleCParser.BandExprContext):String =
-    if(ctx.getChildCount == 1) super.visitBandExpr(ctx)
-    else bracket(visit(ctx.equalityExpr(0)) + ctx.ops.get(0).getText + visit(ctx.equalityExpr(1)))
-
-  override def visitEqualityExpr(ctx: SimpleCParser.EqualityExprContext):String =
-    if(ctx.getChildCount == 1) super.visitEqualityExpr(ctx)
-    else bracket(visit(ctx.relExpr(0)) + ctx.ops.get(0).getText + visit(ctx.relExpr(1)))
-
-  override def visitRelExpr(ctx: SimpleCParser.RelExprContext):String =
-    if(ctx.getChildCount == 1) super.visitRelExpr(ctx)
-    else bracket(visit(ctx.shiftExpr(0))  + ctx.ops.get(0).getText + visit(ctx.shiftExpr(1)))
-
-  override def visitShiftExpr(ctx: SimpleCParser.ShiftExprContext):String =
-    if(ctx.getChildCount == 1) super.visitShiftExpr(ctx)
-    else bracket(visit(ctx.addExpr(0)) + ctx.ops.get(0).getText + visit(ctx.addExpr(1)))
-
-  override def visitAddExpr(ctx: SimpleCParser.AddExprContext):String =
-    if(ctx.getChildCount == 1) super.visitAddExpr(ctx)
-    else bracket(visit(ctx.mulExpr(0)) + ctx.ops.get(0).getText + visit(ctx.mulExpr(1)))
-
-  override def visitMulExpr(ctx: SimpleCParser.MulExprContext):String =
-    if(ctx.getChildCount == 1) super.visitMulExpr(ctx)
-    else bracket(visit(ctx.unaryExpr(0)) + ctx.ops.get(0).getText + visit(ctx.unaryExpr(1)))
-
-  override def visitUnaryExpr(ctx: SimpleCParser.UnaryExprContext):String =
-    if(ctx.getChildCount == 1) super.visitUnaryExpr(ctx)
-    else bracket(ctx.ops.get(0) + visit(ctx.atomExpr()))
-
-
-  override def visitNumberExpr(ctx: SimpleCParser.NumberExprContext):String =
-    ctx.NUMBER().toString
-
   override def visitVarrefExpr(ctx: SimpleCParser.VarrefExprContext):String =
     visitIdentifierAndApply(ctx.ID().getSymbol)
-
-  override def visitParenExpr(ctx: SimpleCParser.ParenExprContext):String =
-    bracket(visitExpr(ctx.expr()))
-
-  override def visitResultExpr(ctx: SimpleCParser.ResultExprContext): String =
-    ctx.resultTok.getText()
-
-  override def visitOldExpr(ctx: SimpleCParser.OldExprContext): String =
-    ctx.oldTok.getText()
-
-  def bracket(s: String): String = " (" + s + ") "
-
-  // mapping helpers
-  def visitStatements(stmts: java.util.List[SimpleCParser.StmtContext]) = stmts.toList.map(visitStmt).mkString("\n")
-
-  def visitPreposts(preposts: java.util.List[SimpleCParser.PrepostContext]) = preposts.toList.map(visitPrepost).mkString(", \n")
-
-  def visitFormalParams(params: java.util.List[SimpleCParser.FormalParamContext]) = params.toList.map(visitFormalParam).mkString(", ")
 
 
   // actual implementation of apply, whenever an identifier is visited it is replaced with its SSA identifier correspondent

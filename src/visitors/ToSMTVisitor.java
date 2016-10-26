@@ -6,6 +6,8 @@ import parser.SimpleCParser;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
+
 import visitors.SimpleCBoolCheckerVisitor;
 
 /**
@@ -28,7 +30,7 @@ public class ToSMTVisitor extends SimpleCBaseVisitor<String> {
         if (ctx.getChildCount() == 1) return super.visitAddExpr(ctx);
         switch (ctx.ops.get(0).getText()) {
             case "+":  return String.format("(bvadd %s %s)", intify(ctx.mulExpr(0)), intify(ctx.mulExpr(1)));
-            case "-":  return String.format("(bvsub %s %s)", intify(ctx.mulExpr(0)), intify(ctx.mulExpr(1)));
+            case "-":  return String.format("(bvsub %s %s)", intify(ctx.mulExpr(0)), intify(ctx.mulExpr(1)));        
             default: return "invalid add op " + ctx.ops.get(0).getText();
         }
 
@@ -112,7 +114,8 @@ public class ToSMTVisitor extends SimpleCBaseVisitor<String> {
     @Override
     public String visitLandExpr(SimpleCParser.LandExprContext ctx) {
         if (ctx.getChildCount() == 1) return super.visitLandExpr(ctx);
-        return String.format("(and %s %s)", boolify(ctx.borExpr(0)) , boolify(ctx.borExpr(1)));
+        return toConjunction(ctx.borExpr().stream().map(e -> boolify(e)).collect(Collectors.toList()));
+        //return String.format("(and %s %s)", boolify(ctx.borExpr(0)) , boolify(ctx.borExpr(1)));
     }
 
     @Override
@@ -182,15 +185,19 @@ public class ToSMTVisitor extends SimpleCBaseVisitor<String> {
 
 
         b.append("(check-sat)\n");
-//        b.append("(get-value (x1))");
         return b.toString();
     }
 
     private String toConjunction(List<String> cs) {
-        if(cs.size() == 0) return "true";
+        return toTree(cs, "and", "true");
+    }
+
+    private String toTree(List<String> cs, String op, String iden) {
+        if(cs.size() == 0) return iden;
 
         String current = cs.remove(0);
-        return String.format("(and %s %s)", current, toConjunction(cs));
+        return String.format("(%s %s %s)", op, current, toTree(cs, op, iden));
+
     }
 
     private String toBV(String expression) {
