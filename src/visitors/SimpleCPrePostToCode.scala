@@ -18,22 +18,30 @@ class SimpleCPrePostToCode extends SimpleCCodeVisitor{
   override def visitProcedureDecl(ctx: SimpleCParser.ProcedureDeclContext): String = {
     if (ctx == null) return ""
 
+    val preposts = visitPreposts(ctx.contract)
+    if (this.requireExprs.isEmpty) return super.visitProcedureDecl(ctx)
+
     val name =  ctx.name.getText()
     val formals = visitFormalParams(ctx.formals)
+
+
 
     val statements = visitStatements(ctx.stmts)
     val returnExpr =  visitExpr(ctx.returnExpr)
 
     returnExprString = returnExpr
 
-    return "int " + name + "(" + formals + ")\n" +
+   val code = "int " + name + "(" + formals + ")\n" +
       visitPreposts(ctx.contract) +
       " {\n" +
         "if (" + this.requireExprs.mkString(" && ") + "){\n" +
           statements + "\n" +
-          "return " + returnExpr + ";" +
-        "\n}\n"
+        "\n}\n" +
+        "return " + returnExpr + ";" +
       "\n}\n"
+
+    this.requireExprs = List[String]()
+    return code
   }
 
   override def visitPreposts(preposts: util.List[PrepostContext]): String =

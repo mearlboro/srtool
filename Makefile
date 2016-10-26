@@ -7,5 +7,5 @@ all:
 	scalac -cp ${INCLUDE_PATH} -d out src/*/*.scala src/*/*.java
 
 	javac -d out \
-      -cp ${INCLUDE_PATH} \
+      -cp ${INCLUDE_PATH}:lib/scala-library.jar:out \
        src/*/*.java

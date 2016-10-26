@@ -1,6 +1,7 @@
 package tool;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.LinkedList;
 
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -11,6 +12,7 @@ import parser.SimpleCParser.ProcedureDeclContext;
 import parser.SimpleCParser.ProgramContext;
 import util.ProcessExec;
 import util.ProcessTimeoutException;
+import visitors.SimpleCtoSSAVisitor;
 import visitors.ToSMTVisitor;
 
 public class CheckCorrect  {
@@ -41,20 +43,18 @@ public class CheckCorrect  {
 		assert ctx.procedures.size() == 1; // For Part 1 of the coursework, this can be assumed
 
 		for(ProcedureDeclContext proc : ctx.procedures) {
-			ToSMTVisitor visitor = new ToSMTVisitor();
-			visitor.visit(proc);
+		//	SimpleCtoSSAVisitor visitor = new SimpleCtoSSAVisitor();
+            ToSMTVisitor visitor = new ToSMTVisitor(new LinkedList<>());
+            visitor.visit(proc);
+		//	System.out.println(visitor.visit(proc));
 			String smTv2 = visitor.getSMTv2();
-			// System.out.println(smTv2);
+			 System.out.println(smTv2);
 
 			ProcessExec process = new ProcessExec("z3", "-smt2", "-in");
 			String queryResult = "";
-			try {
-				queryResult = process.execute(smTv2, TIMEOUT);
+			//	queryResult = process.execute(smTv2, TIMEOUT);
 				// System.out.println(queryResult);
-			} catch (ProcessTimeoutException e) {
-				System.out.println("UNKNOWN");
-				System.exit(1);
-			}
+
 
 			if (queryResult.startsWith("sat")) {
 				System.out.println("INCORRECT");
