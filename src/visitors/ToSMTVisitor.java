@@ -294,7 +294,7 @@ public class ToSMTVisitor extends SimpleCBaseVisitor<String> {
     private String toOp(String s) {
         switch(s) {
             case "==": return "(= %s %s)";
-            case "!=": return "not ( = %s %s ) ";
+            case "!=": return "(not ( = %s %s ))";
             case ">":  return "(bvsgt %s %s)";
             case ">=": return "(bvsge %s %s)";
             case "<=": return "(bvsle %s %s)";
