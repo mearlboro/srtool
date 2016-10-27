@@ -7,6 +7,8 @@ import parser.SimpleCParser;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import visitors.SimpleCBoolCheckerVisitor;
@@ -175,23 +177,56 @@ public class ToSMTVisitor extends SimpleCBaseVisitor<String> {
     @Override
     public String visitEqualityExpr(SimpleCParser.EqualityExprContext ctx) {
         if (ctx.getChildCount() == 1) return super.visitEqualityExpr(ctx);
-        switch (ctx.ops.get(0).getText()) {
-            case "==": return String.format("(= %s %s)", intify(ctx.relExpr(0)), intify(ctx.relExpr(1)));
-            case "!=": return String.format("(not (= %s %s))", intify(ctx.relExpr(0)), intify(ctx.relExpr(1)));
-            default:   return "INVALID OPSSS EQ"   + ctx.ops.get(0).getText();
-        }
+//        switch (ctx.ops.get(0).getText()) {
+//            case "==": return String.format("(= %s %s)", intify(ctx.relExpr(0)), intify(ctx.relExpr(1)));
+//            case "!=": return String.format("(not (= %s %s))", intify(ctx.relExpr(0)), intify(ctx.relExpr(1)));
+//            default:   return "INVALID OPSSS EQ"   + ctx.ops.get(0).getText();
+//        }
+
+
+        AtomicInteger i = new AtomicInteger(0);
+        return fancyPreWeave(
+                ctx.relExpr().stream()
+                        .map(c -> intify(c))
+                        .collect(Collectors.toList()),
+                ctx.ops.stream()
+                        .map(o -> o.getText())
+                        .collect(Collectors.toList()),
+                c -> {
+                    if(i.incrementAndGet() > 1) {
+                        return String.format("(tobv32 %s)", c);
+                    } else return c;
+
+                }
+        );
     }
 
     @Override
     public String visitRelExpr(SimpleCParser.RelExprContext ctx) {
         if (ctx.getChildCount() == 1) return super.visitRelExpr(ctx);
-        return preWeave(
+//        return preWeave(
+//                ctx.shiftExpr().stream()
+//                               .map(c -> intify(c))
+//                               .collect(Collectors.toList()),
+//                ctx.ops.stream()
+//                       .map(o -> o.getText())
+//                       .collect(Collectors.toList())
+//        );
+
+        AtomicInteger i = new AtomicInteger(0);
+        return fancyPreWeave(
                 ctx.shiftExpr().stream()
-                               .map(c -> intify(c))
-                               .collect(Collectors.toList()),
+                        .map(c -> intify(c))
+                        .collect(Collectors.toList()),
                 ctx.ops.stream()
-                       .map(o -> o.getText())
-                       .collect(Collectors.toList())
+                        .map(o -> o.getText())
+                        .collect(Collectors.toList()),
+                c -> {
+                    if(i.incrementAndGet() > 1) {
+                        return String.format("(tobv32 %s)", c);
+                    } else return c;
+
+                }
         );
     }
 
@@ -246,10 +281,14 @@ public class ToSMTVisitor extends SimpleCBaseVisitor<String> {
     }
 
     private String preWeave(List<String> a, List<String> ops) {
+       return fancyPreWeave(a, ops, c -> c);
+    }
+
+    private String fancyPreWeave(List<String> a, List<String> ops, Function<String, String> typeFixxa) {
         if(a.size() == 1) return a.get(0);
         String op = toOp(ops.remove(ops.size() - 1));
         String curr = a.remove(a.size() - 1);
-        return String.format(op,  preWeave(a, ops), curr);
+        return String.format(op,  typeFixxa.apply(fancyPreWeave(a, ops, typeFixxa)), curr);
     }
 
     private String toOp(String s) {

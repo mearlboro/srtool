@@ -108,7 +108,7 @@ class SimpleCtoSSAVisitor extends SimpleCCodeVisitor {
       val fancyName = (state.Pred :: assumptions).mkString(" && ")
       val expr = visitExpr(ctx.condition)
 
-      return s"assert !($fancyName) || $expr;"
+      return s"assert !($fancyName) || ($expr);"
     }
 
   override def visitAssumeStmt(ctx: SimpleCParser.AssumeStmtContext): String = {
@@ -117,7 +117,7 @@ class SimpleCtoSSAVisitor extends SimpleCCodeVisitor {
     val conditionText = visitExpr(ctx.condition)
     val preds = state.Pred
 
-    val newAssumption =  s"(!($preds) || $conditionText)"
+    val newAssumption =  s"(!($preds) || ($conditionText))"
 
     this.assumptions = newAssumption :: this.assumptions
     return ""
