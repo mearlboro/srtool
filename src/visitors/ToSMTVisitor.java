@@ -247,7 +247,9 @@ public class ToSMTVisitor extends SimpleCBaseVisitor<String> {
 
     private String preWeave(List<String> a, List<String> ops) {
         if(a.size() == 1) return a.get(0);
-        return String.format(toOp(ops.remove(0)), a.remove(0), preWeave(a, ops));
+        String op = toOp(ops.remove(ops.size() - 1));
+        String curr = a.remove(a.size() - 1);
+        return String.format(op,  preWeave(a, ops), curr);
     }
 
     private String toOp(String s) {
