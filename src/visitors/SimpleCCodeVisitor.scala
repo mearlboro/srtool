@@ -49,7 +49,6 @@ class SimpleCCodeVisitor extends SimpleCBaseVisitor[String]{
   override def visitAssumeStmt(ctx: SimpleCParser.AssumeStmtContext):String=
     if (ctx == null) "" else "assume " + visitExpr(ctx.condition) + ";"
 
-
   override def visitHavocStmt(ctx: SimpleCParser.HavocStmtContext):String=
     if (ctx == null) "" else "havoc " + ctx.`var`.getText() + ";"
 
