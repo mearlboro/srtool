@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # First argument: directory containing compiled solution and Antlr .jar file (if you are using the Java skeleton)
-# If you are using a language other than Java you may wish to ignore this argument.
 DIR=$1
 export DIR
 cat $2 | $1/prepostToCode | $1/toSSA | $1/toSMT
