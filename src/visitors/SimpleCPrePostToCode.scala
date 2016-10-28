@@ -19,7 +19,8 @@ class SimpleCPrePostToCode extends SimpleCCodeVisitor {
 
   var inRequire = false
 
-  var globalVars = Set.empty[String] // TODO: different visitors
+  var globalVars = Set.empty[String] // TODO: different visitors for more than one procedure - this needs to be refreshed!!!!
+  var localVars = Set.empty[String]
 
   var returnExprString = ""
 
@@ -45,9 +46,11 @@ class SimpleCPrePostToCode extends SimpleCCodeVisitor {
 
     val formals = visitFormalParams(ctx.formals)
     var statements =
-      oldVars.map(v => s"int old_$v;\nold_$v=$v;\n").mkString("\n") + visitStatements(ctx.stmts)
+      oldVars.map(v => s"int old_$v;\nold_$v=$v;\n").mkString("\n") + "\n" + visitStatements(ctx.stmts)
 
-    statements = globalVars.map(v => s"$v = 0;").mkString("\n") + statements
+    statements = globalVars.map(v => s"$v = 0;").mkString("\n") + "\n" + statements
+
+    val hoistedVars = localVars.map(v => s"int $v;").mkString("\n")
 
     val requirePreds = this.requireExprs.mkString(" && ")
 
@@ -56,6 +59,7 @@ class SimpleCPrePostToCode extends SimpleCCodeVisitor {
     val code = if (requirePreds.isEmpty)
       s"""
          |int $name($formals) {
+            |$hoistedVars
             |$statements
             |$ensureAsserts
             |return $returnExpr;
@@ -63,6 +67,7 @@ class SimpleCPrePostToCode extends SimpleCCodeVisitor {
          |""".stripMargin
       else s"""
          |int $name($formals) {
+            |$hoistedVars
             |if ($requirePreds) {
                 |$statements
                 |$ensureAsserts
@@ -101,8 +106,11 @@ class SimpleCPrePostToCode extends SimpleCCodeVisitor {
   override def visitVarDecl(ctx: SimpleCParser.VarDeclContext): String = {
     if (ctx != null && varsAreGlobals) {
       globalVars += ctx.ID().getText()
+      return super.visitVarDecl(ctx)
+    } else {
+      localVars += ctx.ID().getText()
+      return ""
     }
-    return super.visitVarDecl(ctx)
   }
 
   override def visitVarrefExpr(ctx: SimpleCParser.VarrefExprContext):String = {
