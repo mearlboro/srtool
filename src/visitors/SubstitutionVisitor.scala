@@ -21,7 +21,7 @@ class SubstitutionVisitor(val toReplace: String, val replaceWith: String) extend
     val variableName = ctx.arg.getText()
     this.oldVars += variableName
 
-    return s"olderino_$variableName"
+    return s"old_$variableName"
   }
 
 }

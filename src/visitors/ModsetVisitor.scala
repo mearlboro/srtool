@@ -21,11 +21,15 @@ class ModsetVisitor extends SimpleCBaseVisitor[Set[String]] {
 
   override def visitAssumeStmt(ctx: SimpleCParser.AssumeStmtContext): Set[String] = Set.empty[String]
 
-  override def visitHavocStmt(ctx: SimpleCParser.HavocStmtContext): Set[String] = Set.empty[String]
+  override def visitHavocStmt(ctx: SimpleCParser.HavocStmtContext): Set[String] =
+    if (ctx == null) Set.empty[String]
+    else Set(ctx.ID().toString)
 
   override def visitCallStmt(ctx: SimpleCParser.CallStmtContext): Set[String] = Set.empty[String]
 
-  override def visitVarDecl(ctx: VarDeclContext): Set[String] = if (ctx.getChildCount == 1) super.visitVarDecl(ctx) else Set.empty[String]
+  override def visitVarDecl(ctx: VarDeclContext): Set[String] =
+    if (ctx.getChildCount == 1) super.visitVarDecl(ctx)
+    else Set.empty[String]
 
   override def visitIfStmt(ctx: SimpleCParser.IfStmtContext): Set[String] =
     if (ctx == null) Set.empty[String]
