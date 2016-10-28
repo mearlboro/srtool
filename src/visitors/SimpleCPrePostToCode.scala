@@ -27,7 +27,7 @@ class SimpleCPrePostToCode extends SimpleCCodeVisitor {
   override def visitProgram(ctx: SimpleCParser.ProgramContext): String = {
 
     varsAreGlobals = true
-    val globals = ctx.globals.map(v => visitVarDecl(v)).mkString("")
+    val globals = ctx.globals.map(v => visitVarDecl(v)).mkString("\n")
     varsAreGlobals = false
 
     return globals + "\n" + visitProcedureDecl(ctx.procedureDecl)
@@ -96,7 +96,7 @@ class SimpleCPrePostToCode extends SimpleCCodeVisitor {
 
   override def visitEnsures(ctx: SimpleCParser.EnsuresContext):String = {
     if (ctx != null) {
-      val substitutionVisitor = new SubstitutionVisitor("\\result", returnExprString)
+      val substitutionVisitor = new SubstitutionVisitor("\\result", s"($returnExprString)")
       this.ensureExprs = "assert " + substitutionVisitor.visitExpr(ctx.condition) + ";" :: this.ensureExprs
       oldVars = oldVars union substitutionVisitor.oldVars
     }
