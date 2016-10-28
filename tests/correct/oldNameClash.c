@@ -10,5 +10,8 @@ int foo(int i)
     ensures \old(y) > \old(x)
 {
     y = 0;
+
+    int old_x;
+    old_x = 123;
     return 0;
 }

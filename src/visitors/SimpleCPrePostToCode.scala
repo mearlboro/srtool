@@ -39,14 +39,12 @@ class SimpleCPrePostToCode extends SimpleCCodeVisitor {
     val returnExpr = visitExpr(ctx.returnExpr)
     returnExprString = returnExpr
     visitPreposts(ctx.contract)
-
-//    if (this.requireExprs.isEmpty && this.ensureExprs.isEmpty) return super.visitProcedureDecl(ctx)
-
+    
     val name = ctx.name.getText()
 
     val formals = visitFormalParams(ctx.formals)
     var statements =
-      oldVars.map(v => s"int old_$v;\nold_$v=$v;\n").mkString("\n") + "\n" + visitStatements(ctx.stmts)
+      oldVars.map(v => s"int olderino_$v;\nolderino_$v=$v;\n").mkString("\n") + "\n" + visitStatements(ctx.stmts)
 
     statements = globalVars.map(v => s"$v = 0;").mkString("\n") + "\n" + statements
 
