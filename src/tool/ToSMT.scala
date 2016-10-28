@@ -41,7 +41,7 @@ object ToSMT {
       visitor.visit(proc)
       val smTv2: String = visitor.getSMTv2
       System.err.println(smTv2);
-      val process: ProcessExec = new ProcessExec("z3", "-smt2", "-in")
+      val process: ProcessExec = new ProcessExec("z3", "-smt2", "-T:20", "-in")
       var queryResult: String = ""
       try {
         queryResult = process.execute(smTv2, TIMEOUT)
